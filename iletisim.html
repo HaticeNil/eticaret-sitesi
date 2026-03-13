@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["contactForm"]["name"].value;
+            var surname = document.forms["contactForm"]["surname"].value;
+            var email = document.forms["contactForm"]["email"].value;
+            var subject = document.forms["contactForm"]["subject"].value;
+            var message = document.forms["contactForm"]["message"].value;
+
+            if (name == "" || surname == "" || email == "" || subject == "" || message == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if(!email.match(emailPattern)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form name="contactForm" onsubmit="return validateForm()" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject"><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
